@@ -1,0 +1,29 @@
+video: https://www.youtube.com/watch?v=Ilg3gGewQ5U&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=3
+
+What is backpropagation really doing?
+
+It's all about getting the negative gradient to nudge the weights and biases toward a lower cost function
+
+Intuitive walkthrough
+  In theory you change based on every single example, but actually just change based on a trick shown later
+  In one example - a single image
+  Start at the end - try and nudge the other values to get the activation value as close to the end value
+  Priotize changing neurons based on how different they are
+  Look at the original function - sigmoid(sigma(weight0 x value0) + bias)
+    If want to increase end value
+      Can increase bias
+      Can increase weights in proportian to activation
+      Can change the activations from the previous layer in proportion to weights
+      Larger activations have the larger effect - making those weights more important
+        Reminiscent of Hebbian theory which talks about actual how actual neurons work
+      Can take all of that to request changes to the previous layer from all of original layer
+        In proportion to the corresponding weights and how much each end node needs to change
+          Called propogating backwards!!
+        Can repeat this recursively for all layers
+        Take average across all examples, that's the negative gradient change
+
+In practice you compute a gradient descent step with a small portion of the total practice data
+  Makes things a lot faster as backprogration can be very very slow
+  Called Stochastic gradient descent
+
+One massive challenge in machine learning in general is just getting the training data, which is why the handwritten number example is nice bc there's a labeled database already!

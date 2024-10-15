@@ -1,0 +1,45 @@
+Video: https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
+
+Neural networks are grow more important everytday
+
+Different types of neural networks are good for diffent types of tasks.
+
+Neuron - thing that holds a number
+  for 28 x 28 grid, holds 784 nodes (1 for each pixel)
+  value is grayscale value
+  (number guessing neural network)
+  last row is 10 - one for each digit
+  confidence score between 0 and 1 for each
+  "hidden layers" in the middle
+    lots of room for expirimentation with these middle rows
+    which neurons connect to which? Very specifc patterns in the precious row affect the next
+    meant to simulate real neurons in brains
+    Middle layers are trying to break down tasks similar to humans would - for instance, upper loop for 8 and 9, ine for 1, etc.
+    How could one recognize smaller parts - answer, break it down more into more smaller parts, more hidden layers
+    called layers of abstractions
+      great for anything that's good for breaking down
+      visual or audio recognition is a big one
+    how to connect neurons between layers?
+      attach weights inbetween nodes - each weight is Different
+      take weighted sum between all values in previous layer, each node has it's own set of weights
+      squish the range of outputs into between zero and one
+        Sigmoid function is used for this
+      can use a bias
+        subtract from weighted sum before sigmoid to make sure it has to overcome a bit before it gets 'meaningfully activated'
+      every hidden layer as it's own set of weights and biases!
+      setting the weights and biases manually can be a good exercise into what it's actually doing
+      looking at the weights and biases it set is very useful for figuring out it's solution and other solutions
+    it's matrix math!
+      all activations in previous row are in a 1 column vector
+      all weights are organized into a multi-column vector, with each row representation all the weights for a paticular neuron
+      matrix multiplication gives you new activations for next layer
+      add biases by adding a new 1 column vector of biases to previous matrix multiplication
+      apply the sigmoid to everything
+  neurons are actually functions
+  neurual networks are just really complicated functions
+
+Most modern neural networks don't use Sigmoid anymore
+Most use ReLU now - much easier to train
+Rectified linear unit
+ReLU(a) = max(0, a)
+Helps to make sure it's only activated if it passes a certain threshhold
