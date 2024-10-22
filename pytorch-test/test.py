@@ -6,6 +6,9 @@ import pickle #Library for serializing and loading Python objects from files
 import gzip #Work with compressed files
 import torch #Library for machine learning with PyTorch, helping with tensors
 import math
+from IPython.core.debugger import set_trace
+import torch.nn.functional as F
+from torch import nn
 
 #Sets up directories for data
 DATA_PATH = Path("data") #A Path object representing the "data" folder
@@ -91,3 +94,68 @@ def accuracy(out, yb):
 
 print(accuracy(preds,yb))
 
+lr = 0.5  # learning rate
+epochs = 2  # how many epochs to train for
+
+for epoch in range(epochs):
+    for i in range((n - 1) // bs + 1):
+        set_trace()
+        start_i = i * bs
+        end_i = start_i + bs
+        xb = x_train[start_i:end_i]
+        yb = y_train[start_i:end_i]
+        pred = model(xb)
+        loss = loss_func(pred, yb)
+
+        loss.backward()
+        with torch.no_grad():
+            weights -= weights.grad * lr
+            bias -= bias.grad * lr
+            weights.grad.zero_()
+            bias.grad.zero_()
+
+print(loss_func(model(xb), yb), accuracy(model(xb), yb))
+
+loss_func = F.cross_entropy
+
+def model(xb):
+    return xb @ weights + bias
+
+print(loss_func(model(xb), yb), accuracy(model(xb), yb))
+
+class Mnist_Logistic(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.weights = nn.Parameter(torch.randn(784, 10) / math.sqrt(784))
+        self.bias = nn.Parameter(torch.zeros(10))
+
+    def forward(self, xb):
+        return xb @ self.weights + self.bias
+    
+model = Mnist_Logistic()
+
+print(loss_func(model(xb), yb))
+
+with torch.no_grad():
+    for p in model.parameters(): p -= p.grad * lr
+    model.zero_grad()
+
+def fit():
+    for epoch in range(epochs):
+        for i in range((n - 1) // bs + 1):
+            start_i = i * bs
+            end_i = start_i + bs
+            xb = x_train[start_i:end_i]
+            yb = y_train[start_i:end_i]
+            pred = model(xb)
+            loss = loss_func(pred, yb)
+
+            loss.backward()
+            with torch.no_grad():
+                for p in model.parameters():
+                    p -= p.grad * lr
+                model.zero_grad()
+
+fit()
+
+print(loss_func(model(xb), yb))
