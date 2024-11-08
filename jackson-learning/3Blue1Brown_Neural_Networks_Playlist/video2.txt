@@ -1,0 +1,35 @@
+video: https://www.youtube.com/watch?v=IHZwWFHWa-w&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=2
+
+Gradient descent, how neural networks learn
+
+Give it training data to initialize it, then use more training data to see if it's right
+
+First, make all weights and bias completely random
+  It preforms horribly, the output is a mess
+
+Define a cost function
+  Tell computer what you wanted it to be to get a 'cost' value
+  Add up the sqaures of the differences of all of the outputs and expected outputs
+    summation of (output - expected output)^2
+  sum is small when network is correct, large when network isn't confident
+  average cost is how accurate the network is
+  Take the average cost with a single input, and try and figure out which direction is the direction to get you closer to the local minimum
+  Then proportanally take a step closer to that given the slope
+  Local minimum is doable, global minimum is really really hard
+  For multivariable calc, you can take the gradient!
+  Take the negative gradient and apply it to the weights and biases
+  You can do this via a process called backpropagation
+  The whole proccess is called gradient descent
+  When nudging it, positive values increase and negative values decrease
+  When nudging it, bigger changes are more relevant, smaller changes are already somewhat good
+  Some connections are just more important than other connections
+
+Analyzing the network
+The example works pretty well! It identifies almost everything right
+It found it's own local minimum and doesn't conform to our prediction of edges and patterns, it's more random looking
+This is a starting point, it's old technology that was researched in the 80's and 90's
+It can be a lot better
+
+Properly labeled data lowers the cost function more quickly than randomly labeled data, probably because the original data has labels with things in common between the examples
+Neural Networks learn structured data much faster
+Many local minima, rougly equal quality
