@@ -1,13 +1,3 @@
-import gymnasium as gym
-import torch
-import torch.nn as nn
-import torch.nn.functional as fn
-import cv2 #OpenCV library, used to manipulate and process images
-import numpy as np
-
-environment = gym.make("ALE/Pong-v5")
-environment.reset()
-
 #Simplifying the data/observations for the agent
 def preprocess_frame(frame):
     frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY) #Converts to grayscale to reduce each frame's data size - color takes up more space
@@ -42,4 +32,5 @@ for _ in range(5):
     state = environment.reset()  # Reset the environment
     state = preprocess_frame(state)  # Preprocess the frame
     print(f"Processed frame shape: {state.shape}")  # Should output (84, 84)
+
 
