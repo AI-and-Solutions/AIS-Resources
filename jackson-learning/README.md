@@ -1,6 +1,11 @@
-# Jacob's Learning README
+# Jackson's Learning README
 
-This is where I'm storing my learning work for AI & Society Fall 2024. My learning work is notes or code that helped me learn more about this project.
+## Welcome to my learning README!! I post all my notes here
+
+## All the resrouces I've used:
+
+3Blue1Brown Neural Networks Playlist
+https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
 
 ### here are some learning work examples
 
@@ -9,5 +14,4 @@ This is where I'm storing my learning work for AI & Society Fall 2024. My learni
 - I'm simplifying my project by using [PyTorch](https://pytorch.org/), a library of optimized machine learning functions. I am figuring out how to use a dataloader to simplify the process of feeding my network training data
 
 These are just some examples of what I've been working on. Explore this folder to see the extent of my learning!
-
 

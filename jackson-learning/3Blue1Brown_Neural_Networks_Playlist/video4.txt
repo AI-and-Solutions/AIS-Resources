@@ -1,0 +1,26 @@
+Backprogration Calculus
+
+Example with just one node per layer, 3 layers
+  a(L) = sigmoid(w(L)a(L-1) + b(L))
+  cost = (a(L) - y)^2 y = expected output
+  
+  z(L) = w(L)a(L-1) + b(L)
+  a(L) = sigmoid(w(L))
+
+  a(L-1) is recurisive
+  you can do Cost / w(L) to find the impact weight on cost with derrivatives
+
+  dCost / dWeight = ( dz / dweight ) * (da / dz) * (dCost / da) can cancel out da and dz
+  gives us affect of cost on weight
+
+  partial derrivatives with cost function:
+    C/a is in terms of and y (the difference between the cost and y is dependent on a and y)
+    a/z is in terms of z and sigmoid (the sigmoid is the only real difference between a and z)
+    a/w is in terms of a (the previous point is most important when changing the weight)
+
+  overall partial derrivatives can be used to find the assosiated values that are important when changing something examples
+  You take the average partial dervative, and can take the output for the previous one and plug it in recursively
+
+For multiple neurons you just take the sum of multiple different routes
+
+None of this is explicitly important for me to know for using neural networks, just for using them
