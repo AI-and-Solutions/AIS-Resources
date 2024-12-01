@@ -161,7 +161,7 @@ target_model.eval() #Sets the target model to evaluation mode
 optimizer = torch.optim.Adam(main_model.parameters(), lr=LEARNING_RATE) #Sets up the optimizer for updating the weights of the main model
 replay_buffer = ReplayBuffer(MEMORY_SIZE) #Creates a replay buffer to store experience tuples during training
 
-# Epsilon-greedy strategy
+#Epsilon-greedy strategy
 def epsilon_greedy_policy(state, epsilon): #Defines a policy for choosing actions based on the epsilon-greedy strategy
     if random.random() < epsilon: #Implements the exploration part of epsilon-greedy
         return random.randint(0, 2)  #Random action
@@ -170,7 +170,40 @@ def epsilon_greedy_policy(state, epsilon): #Defines a policy for choosing action
         state = torch.tensor(state, dtype=torch.float32, device=device).unsqueeze(0) #Converts state (a NumPy array) into a PyTorch tensor of type float32 and moves it to the specified device
         q_values = main_model(state) #Computes Q-values for all possible actions from the current state
         return q_values.argmax().item() #Selects the action with the highest Q-value (exploitation)
+
+#Train function    
+def train_step():
+    if len(replay_buffer) < BATCH_SIZE:
+        return
+    #Sample a batch from replay buffer
+    states, actions, rewards, next_states, dones = replay_buffer.sample(BATCH_SIZE)
+    states = torch.tensor(states, dtype = torch.float32, device = device)
+    actions = torch.tensor(actions, dtype=torch.long, device = device)
+    rewards = torch.tensor(rewards, dtype=torch.float32, device = device)
+    next_states = torch.tensor(next_states, dtype=torch.float32, device=device)
+    dones = torch.tensor(dones, dtype=torch.float32, device=device)
     
+    #Computing predicted Q-values
+    q_values = main_model(states)
+    q_values = q_values.gather(1, actions.unsqueeze(1)).squeeze(1)
+    
+    #Computing target Q-values
+    with torch.no_grad():
+        next_q_values = target_model(next_states).max(1)[0]
+        target_q_values = rewards + GAMMA * next_q_values * (1-dones)
+
+    #Computing loss
+    loss = F.mse_loss(q_values, target_q_values)
+
+    #Optimizing the model
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+# Training loop
+epsilon = EPSILON_START
+step_count = 0
+        
 
 
 ##Testing Pong Game Functionality##
