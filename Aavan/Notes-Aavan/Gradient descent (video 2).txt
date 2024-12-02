@@ -1,0 +1,24 @@
+Gradient descent (video 2)
+
+-	the machine learns by find the minimum of a certain function
+
+-	each "neuron" is a product of the previous neurons, with weights and biases
+
+- 	find cost, large when bad, small when good.
+
+-	find avg cost which then declares when the model is accurate or terrible
+
+-	neural networks takes the gradient to find the next best step
+
+-	in principal, teaching a machine to learn is finding the minima of a function 
+
+-	you add up the squares of the differences between each of those trash output activations and the value you want them to have
+
+-	average cost is our measure for how lousy the network is
+
+-	depending on the cost you change the weight
+
+-	the algorithm for minimizing the function is to compute gradient direction, then take a small step downhill, and repeat that over and over.
+
+
+

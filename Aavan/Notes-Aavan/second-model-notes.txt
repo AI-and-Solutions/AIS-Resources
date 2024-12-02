@@ -1,0 +1,22 @@
+Goal of Refactoring
+
+Make the code shorter, more understandable, and/or more flexible.
+Using torch.nn.functional (typically imported as F)
+
+Contains functions from the torch.nn library.
+Functions include:
+Loss functions (e.g., cross_entropy, nll_loss)
+Activation functions (e.g., relu, softmax)
+Pooling functions (e.g., max_pool2d)
+Some layers like convolutions and linear layers are better handled using nn.Module classes rather than functions.
+Simplifying Code with F.cross_entropy
+
+Combines log softmax activation and negative log-likelihood (NLL) loss into a single function.
+This eliminates the need for:
+Manual log_softmax in the model's forward() function.
+Separate use of nn.NLLLoss() during training.
+Refactoring Benefits
+
+Shorter: Less code is needed by using built-in functions.
+More Understandable: F.cross_entropy clarifies that the task involves classification.
+More Flexible: Easier to switch loss functions without changing the model architecture.
