@@ -1,0 +1,16 @@
+- last activation is determined by a weight times the previous neuron's activation plus some bias
+- then you pump that through some special nonlinear function like the sigmoid or ReLU
+- conceptually, this tiny nudge to WL causes some nudge to ZL, which in turn causes some nudge to AL, which directly influences the cost
+→ this right here is the chain rule, where multiplying together these three ratios gives us the sensitivity of c to small changes in WL
+- even slight changes stand to have a big impact on the final cost function
+- the derivative of AL with respect to ZL is just the derivative of our sigmoid function
+- this last derivative, the amount that the small nudge to the weight influenced the last layer depends on how strong the previous neuron is
+- “neurons-that-fire-together-wire-together”
+- the cost functions derivative requires averaging this expression over all training examples, which is just one component of the gradient vector 
+- back propagation comes in to see how sensitive the cost function is to the activation of the previous layer 
+- this initial derivative in the chain rule expression, the sensitivity of z to the previous activation, comes out to be the weight
+- all of these are essentially the same equations we had before in the one-neuron-per-layer case, it's just that it looks a little more complicated
+- the chain-rule derivative expression describing how sensitive the cost is to a specific weight looks essentially the same
+- once you know how sensitive the cost function is to the activations in this second-to-last layer, you can just repeat the process for all the weights and biases feeding into that layer
+
+

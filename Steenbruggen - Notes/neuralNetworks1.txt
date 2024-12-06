@@ -1,0 +1,24 @@
+- Neural networks are inspired by the brain 
+- There's a number of hidden layers below the top layer, the activations in one layer determine the activations of the next layer 
+→ the way the information is processed is determined based on these activations
+- Recognizing a loop can also break down into subproblems, one such way to do so is by recognizing the various little edges that make up the network 
+- Detecting edges and patterns is very helpful for image recognition tasks 
+- Even with more complex tasks like parsing speech, breaking the task down into layers of abstraction is very useful 
+- The goal is to have some mechanism that could conceivably combine pixels into edges, or edges into patterns, or patterns into digits
+- We assign a weight to each one of the connections between our neuron and the neurons from the first layer
+→ these weights are simply numbers
+- Using the activations from the first layer, we compute a weighted sum according to these weights
+- If we made the weights associated with almost all of the pixels zero except for some positive weights in this region that we care about, then taking the weighted sum of all the pixel values just amounts to adding up the values of the pixel just in the region that we care about
+- If you wanted to pick up on if there was an edge here, you can have some negative weights associated with the surrounding pixels 
+- Common practice to use the weighted sum in some function that squishes the real number line into the range of 0 and 1
+→ the sigmoid function, also known as the logistic curve does this 
+→ negative inputs are close to 0 and positive inputs close to 1 
+- You can add some other number, known as a bias, to the weighted sum before using the sigmoid squishification function 
+- Every neuron in a layer is connected to one another, each of those connections having a certain weight and bias associated with it 
+- A layer of 16 neurons has a total of 784 connections, with 748 * 16 weights and biases, that's roughly 13000 total weights and biases 
+- Learning is referring to getting the computer to find a valid setting for all of these numbers so it can solve the desired problem 
+- You could treat the network as a black box or you could purposefully tweak the numbers so that the second layer picks up on edges and the third layer picks up on patterns, etc.
+→ this allows for a starting place to experiment with changing the structure to improve the network when it does not perform the way it is anticipated
+- Digging into what the weights and biases are doing is a good way to challenge your assumptions and really expose the full space of possible solutions
+- Machine learning relies heavily on linear algebra, understanding linear algebra will allow for easier visualization of the matrices and what matrix multiplication means 
+- You can communicate the full transition of activations from one layer to the next in an extremely tight and neat little expression, and this makes the relevant code both a lot simpler and a lot faster
