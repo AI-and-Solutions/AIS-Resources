@@ -6,7 +6,7 @@ import torch.nn.functional as F
 import cv2 #Imports OpenCV, a library for image processing, used for resizing and normalizing frames.
 import random #Generates random numbers 
 from collections import deque #Fast queue like container, used for replay buffer
-
+import matplotlib.pyplot as plt #plots training performance graphs
 
 #Pong Game Environment / The Physics Engine
 class PongGame:
@@ -214,3 +214,9 @@ for episode in range(NUM_EPISODES):
         target_model.load_state_dict(main_model.state_dict())
 
     print(f"Episode {episode}, Reward: {total_reward}, Epsilon: {epsilon:.3f}")
+
+#Plot rewards
+plt.plot(rewards_history)
+plt.xlabel('Episode')
+plt.ylabel('Total Reward')
+plt.show()
