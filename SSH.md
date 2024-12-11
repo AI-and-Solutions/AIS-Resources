@@ -151,3 +151,15 @@ PasswordAuthentication no
 Restart SSH Service:
 
 sudo systemctl restart ssh
+
+## Step 3.3: Set Up Public Key Authentication
+
+Generate SSH Keys:
+
+On each client machine:
+
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/ubuntu_key
+
+# Copy Public Keys to Server:
+
+ssh-copy-id -i ~/.ssh/ubuntu_key.pub -p 2222 username@192.168.1.100
