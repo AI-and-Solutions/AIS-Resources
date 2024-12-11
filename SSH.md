@@ -226,3 +226,12 @@ pip install numpy pandas tensorflow torch
 pip install virtualenv
 virtualenv venv
 source venv/bin/activate
+
+## Step 6.2: GPU Acceleration
+
+Install NVIDIA Drivers:
+
+sudo apt install nvidia-driver-525
+
+Install CUDA and cuDNN:
+Follow NVIDIA’s documentation to install compatible versions.
