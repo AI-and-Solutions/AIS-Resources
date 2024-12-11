@@ -235,3 +235,24 @@ sudo apt install nvidia-driver-525
 
 Install CUDA and cuDNN:
 Follow NVIDIA’s documentation to install compatible versions.
+
+### 7. Create User Accounts for Teammates
+
+## Step 7.1: Add Users
+
+# Create Accounts:
+
+sudo adduser teammate1
+
+Assign Permissions:
+
+sudo usermod -aG sudo teammate1
+
+## Step 7.2: Configure User SSH Access
+
+# Setup Authorized Keys:
+
+mkdir /home/teammate1/.ssh
+chmod 700 /home/teammate1/.ssh
+nano /home/teammate1/.ssh/authorized_keys
+chmod 600 /home/teammate1/.ssh/authorized_keys
