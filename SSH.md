@@ -163,3 +163,27 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/ubuntu_key
 # Copy Public Keys to Server:
 
 ssh-copy-id -i ~/.ssh/ubuntu_key.pub -p 2222 username@192.168.1.100
+
+### 4. Generate and Distribute PEM Files
+
+## Step 4.1: Generate Key Pairs
+
+# Server-Side Key Generation:
+
+ssh-keygen -t rsa -b 2048 -f ~/.ssh/teammate_key
+
+## Step 4.2: Securely Share PEM Files
+
+# Distribute Keys:
+
+Use tools like scp or secure email.
+
+# Example command:
+
+scp -P 2222 ~/.ssh/teammate_key.pem teammate@remote_host:/path/to/store
+
+# Protect Keys:
+
+Ensure PEM file permissions:
+
+chmod 400 teammate_key.pem
