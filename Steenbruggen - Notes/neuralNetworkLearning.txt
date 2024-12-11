@@ -1,0 +1,24 @@
+- gradient descent underlies not only how neural networks learn, but how a lot of other machine learning works as well
+- activation for each neuron in the following layers is based on a weighted sum of all the activations in the previous layer, plus some special number called a bias
+- the network has about 13,000 weights and biases that we can adjust, and it's these values that determine what exactly the network actually does
+- can test if the network functions as planned by after you train the network, showing it more labeled data that it's never seen before, and seeing how accurately it classifies those new images
+- think of each neuron as being connected to all the neurons in the previous layer, and the weights in the weighted sum defining its activation are kind of like the strengths of those connections, and the bias is some indication of whether that neuron tends to be active or inactive
+- cost sum is small when the network confidently classifies the image correctly and large when the network does not know what it is doing 
+- consider the average cost over all of the tens of thousands of training examples at your disposal and this average cost is our measure for how lousy the network is, and how bad the computer should feel
+- tell the network how to change those weights and biases so that it gets better 
+- if you can figure out the slope of the function where you are, then shift to the left if that slope is positive, and shift the input to the right if that slope is negative, do this at every point and you will approach some local minimum 
+- the gradient of a function gives you the direction of steepest ascent
+- the length of this gradient vector is an indication for just how steep that steepest slope is
+- vector that tells you what the downhill direction is and how steep it is
+- the algorithm for minimizing the function is to compute this gradient direction, then take a small step downhill, and repeat that over and over
+- the negative gradient of the cost function is just a vector
+- the algorithm for computing this gradient efficiently, which is effectively the heart of how a neural network learns, is called backpropagation
+- the process of repeatedly nudging an input of a function by some multiple of the negative gradient is called gradient descent
+→ it is a way to converge towards some local minimum of a cost function
+- each component of the negative gradient tells us two things: the sign tells us whether the corresponding component of the input vector should be nudged up or down, and the relative magnitudes of all these components kind of tells you which changes matter more
+- the cost function is a layer of complexity on top of that– it takes the 13,000 weights and biases as inputs and spits out a single measure of lousiness based on the training examples
+- the gradient of the cost function tells us what nudges to all these weights and biases cause the fastest change to the value of the cost function, which you might interpret as saying which changes to which weights matter the most
+- In the network layers, the second layer might pick up on little edges, that the third layer would piece together those edges to recognize loops and longer lines, and that those might be pieced together to recognize digits
+- you need to dig into hidden layers to figure out what the network is usually doing 
+- helpful book about this is by Michael Nielsen on deep learning and neural networks
+- does minimizing this cost function actually correspond to any sort of structure in the image, or is it just memorization?

@@ -1,0 +1,21 @@
+- negative gradient of the cost function tells you how you need to change all of the weights and biases to most efficiently decrease the cost 
+- backpropagation: an algorithm for computing the gradient 
+- cost function involves averaging a certain cost per example over all the training examples 
+- we adjust the weights and biases for a single gradient descent step based on every single element 
+- we can’t directly change activations, but we can influence the weights and biases 
+- activation: a certain weighted sum of all the activations in the previous layer, plus a bias, which is all then plugged into something like the sigmoid squishification function or a ReLU
+- you can increase bias, the weights and you can change the activations from the previous layer 
+- connections with the brightest neurons from the preceding layer have the biggest effect since those weights are multiplied by larger activation values 
+- increasing one of those weights would have a stronger influence on the cost function than increasing the weights of connections with dimmer neurons 
+- Hebbian theory: neurons that fire together wire together 
+- this means the biggest increases to weights, the biggest strengthening of connections, happens between neurons which are the most active and the ones which we wish to become more active 
+- can increase neurons activation by changing all the activations in the previous layer 
+- can receive most bang for buck by seeking changes that are proportional to the size of the corresponding weights 
+- adding together all of the effects above result in a list of judges that you want to happen to the second to last layer to make it less active 
+- this process can be recursively applied to the relevant weights and biases that determine those values 
+- this is how a single training example wishes to judge each one of those weights and biases, you should go through this same back prop routine for every other training example, recording how each of them would like to change the weights and biases, and averaging together those desired changes 
+- this collection of the average nudges to each weight and bias is the negative gradient of the cost function referenced previously 
+- computers take a long time to add up the influence of every training example and every gradient descent step, so instead you randomly shuffle your training data and then divide it into a whole bunch of mini-batches and compute a step according to the mini-batch 
+→ not going to be the actual gradient of the step function but it gives a pretty good approximation and a significant computational speed up 
+- backpropagation is the algorithm for determining how a single training example would like to judge the weights and biases, not just in terms of whether they should go up or down, but in terms of what relative proportions to those changes cause the most rapid decrease to the cost 
+- using mini-batches to compute an approximate gradient will allow you to converge towards a local minimum or the cost function 
