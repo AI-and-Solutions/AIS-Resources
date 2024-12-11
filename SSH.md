@@ -16,3 +16,31 @@ Ensure the USB is at least 8 GB.
 
 Validate the integrity of the ISO file using checksums (e.g., sha256sum).
 
+## Step 1.2: Partitioning and Installation
+
+Partitioning:
+
+Before booting into the USB, back up all important data.
+
+Use tools like GParted to create a 250 GB ext4 partition for Ubuntu.
+
+Allocate swap space (~2x the size of RAM) if needed.
+
+# Installing Ubuntu:
+
+Boot into the USB by adjusting BIOS/UEFI boot order.
+
+Select “Install Ubuntu” and choose “Manual Partitioning”.
+
+Assign the ext4 partition as root (/) and configure swap space if applicable.
+
+## Step 1.3: Post-Installation Configuration
+
+# First Boot:
+
+Log in using the primary user credentials created during installation.
+
+Update the system:
+
+sudo apt update && sudo apt upgrade -y
+
