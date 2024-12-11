@@ -116,3 +116,38 @@ Access your router settings (typically at 192.168.1.1).
 
 Forward port 22 (or a custom SSH port) to your Ubuntu system’s IP.
 
+### 3. Enable and Secure the SSH Server
+
+## Step 3.1: Enable and Start SSH
+
+# Enable SSH on Boot:
+
+sudo systemctl enable ssh
+
+# Verify Service Status:
+
+sudo systemctl status ssh
+
+## Step 3.2: Enhance Security
+
+# Modify SSH Configuration:
+
+sudo nano /etc/ssh/sshd_config
+
+# Key changes:
+
+Change default port:
+
+Port 2222
+
+Disable root login:
+
+PermitRootLogin no
+
+Enable public key authentication:
+
+PasswordAuthentication no
+
+Restart SSH Service:
+
+sudo systemctl restart ssh
