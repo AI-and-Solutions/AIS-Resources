@@ -93,3 +93,26 @@ sudo netplan apply
 # Verify Configuration:
 
 ping google.com
+
+## Step 2.2: Hostname Configuration
+
+# Set a Descriptive Hostname:
+
+sudo hostnamectl set-hostname UbuntuAIHost
+
+Update /etc/hosts:
+
+sudo nano /etc/hosts
+
+# Add:
+
+192.168.1.100 UbuntuAIHost
+
+## Step 2.3: Router Configuration
+
+Port Forwarding:
+
+Access your router settings (typically at 192.168.1.1).
+
+Forward port 22 (or a custom SSH port) to your Ubuntu system’s IP.
+
