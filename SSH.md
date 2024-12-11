@@ -44,3 +44,52 @@ Update the system:
 
 sudo apt update && sudo apt upgrade -y
 
+# Essential Tools:
+
+## Install basic development packages:
+
+sudo apt install git build-essential python3-pip curl
+
+# Install OpenSSH for remote access:
+
+sudo apt install openssh-server
+
+# Verify OpenSSH is running:
+
+sudo systemctl status ssh
+
+### 2. Configure the Network
+
+## Step 2.1: Setting a Static IP Address
+
+# Determine Network Interface:
+
+ip a
+
+Identify the active interface (e.g., eth0 or wlan0).
+
+Edit Netplan Configuration:
+
+sudo nano /etc/netplan/01-netcfg.yaml
+
+# Example configuration:
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses:
+        - 192.168.1.100/24
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+
+# Apply Changes:
+
+sudo netplan apply
+
+# Verify Configuration:
+
+ping google.com
