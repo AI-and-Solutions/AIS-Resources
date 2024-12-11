@@ -208,3 +208,21 @@ sudo ufw status verbose
 # Review Logs:
 
 sudo journalctl -u ufw
+
+### 6. Install Required Development Tools
+
+## Step 6.1: Python and Libraries
+
+# Install Python and Pip:
+
+sudo apt install python3 python3-pip
+
+# Install Popular Libraries:
+
+pip install numpy pandas tensorflow torch
+
+# Set Up Virtual Environments:
+
+pip install virtualenv
+virtualenv venv
+source venv/bin/activate
