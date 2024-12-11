@@ -187,3 +187,24 @@ scp -P 2222 ~/.ssh/teammate_key.pem teammate@remote_host:/path/to/store
 Ensure PEM file permissions:
 
 chmod 400 teammate_key.pem
+
+### 5. Configure Firewall Settings
+
+## Step 5.1: Enable UFW
+
+# Basic Rules:
+
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 2222/tcp
+sudo ufw enable
+
+## Step 5.2: Monitor Firewall Logs
+
+# Check UFW Status:
+
+sudo ufw status verbose
+
+# Review Logs:
+
+sudo journalctl -u ufw
