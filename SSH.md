@@ -256,3 +256,24 @@ mkdir /home/teammate1/.ssh
 chmod 700 /home/teammate1/.ssh
 nano /home/teammate1/.ssh/authorized_keys
 chmod 600 /home/teammate1/.ssh/authorized_keys
+
+### 8. Monitor and Optimize System Performance
+
+## Step 8.1: Resource Monitoring
+
+# Tools:
+
+Use htop for CPU and RAM usage.
+
+Use iotop for disk I/O.
+
+Use nvidia-smi for GPU performance.
+
+## Step 8.2: Optimize Tasks
+
+Adjust Process Priorities:
+
+renice -n -10 -p PID
+
+# Schedule Heavy Tasks:
+Use cron to run tasks during off-peak hours.
